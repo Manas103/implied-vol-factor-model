@@ -1,0 +1,37 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\Manas\Downloads\Auto Job Applier\Total Job Application process flow\projects\implied-vol-factor-model\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Manas\Downloads\Auto Job Applier\Total Job Application process flow\projects\implied-vol-factor-model
+configfile: pyproject.toml
+testpaths: tests
+collecting ... collected 27 items
+
+tests/test_data.py::test_combined_panel_has_expected_columns PASSED      [  3%]
+tests/test_data.py::test_combined_panel_series_columns_match_pca_module PASSED [  7%]
+tests/test_data.py::test_combined_panel_has_no_missing_values PASSED     [ 11%]
+tests/test_data.py::test_combined_panel_spans_about_12_years PASSED      [ 14%]
+tests/test_data.py::test_combined_panel_dates_are_sorted_and_unique PASSED [ 18%]
+tests/test_data.py::test_combined_panel_values_are_plausible_volatility_levels PASSED [ 22%]
+tests/test_features.py::test_feature_count_is_exactly_38 PASSED          [ 25%]
+tests/test_features.py::test_feature_row_count_matches_changes_row_count PASSED [ 29%]
+tests/test_features.py::test_no_leakage_mutating_future_rows_does_not_change_past_feature_rows PASSED [ 33%]
+tests/test_features.py::test_zscore_feature_matches_manual_computation PASSED [ 37%]
+tests/test_features.py::test_lag1_change_feature_is_shifted_change PASSED [ 40%]
+tests/test_features.py::test_warmup_rows_are_nan_then_feature_is_fully_populated PASSED [ 44%]
+tests/test_model.py::test_oos_r2_is_one_for_perfect_predictions PASSED   [ 48%]
+tests/test_model.py::test_oos_r2_is_zero_for_always_predict_zero PASSED  [ 51%]
+tests/test_model.py::test_oos_r2_is_negative_when_predictions_are_worse_than_zero PASSED [ 55%]
+tests/test_model.py::test_walk_forward_predict_leaves_initial_window_as_nan PASSED [ 59%]
+tests/test_model.py::test_walk_forward_predict_output_length_matches_input PASSED [ 62%]
+tests/test_model.py::test_walk_forward_predict_does_not_leak_future_targets PASSED [ 66%]
+tests/test_model.py::test_walk_forward_predict_recovers_a_strong_linear_signal PASSED [ 70%]
+tests/test_pca.py::test_fit_pca_matches_sklearn_oracle PASSED            [ 74%]
+tests/test_pca.py::test_dominant_common_factor_is_recovered_as_factor_one PASSED [ 77%]
+tests/test_pca.py::test_explained_variance_ratio_is_sorted_and_bounded PASSED [ 81%]
+tests/test_pca.py::test_scores_have_unit_variance_approximately PASSED   [ 85%]
+tests/test_pca.py::test_name_factors_on_synthetic_loadings[loadings0-level] PASSED [ 88%]
+tests/test_pca.py::test_name_factors_on_synthetic_loadings[loadings1-term-slope] PASSED [ 92%]
+tests/test_pca.py::test_name_factors_on_synthetic_loadings[loadings2-VVIX-dominated] PASSED [ 96%]
+tests/test_pca.py::test_daily_changes_is_one_row_shorter_than_panel PASSED [100%]
+
+============================= 27 passed in 1.40s ==============================

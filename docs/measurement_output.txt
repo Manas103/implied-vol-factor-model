@@ -1,0 +1,53 @@
+panel: 3012 rows, 2014-09-02 to 2026-08-31, 8 series: ['VIX', 'VIX9D', 'VIX3M', 'VIX6M', 'VVIX', 'VXN', 'RVX', 'VXAPL']
+
+PCA on standardized daily changes:
+  explained variance ratio: [0.8524, 0.0586, 0.0385, 0.0227]
+  cumulative, top 3: 0.9494
+  factor names (from loadings, see pca.name_factors): ['level', 'VXAPL-dominated', 'VVIX-dominated', 'term-slope']
+           VIX  VIX9D  VIX3M  VIX6M   VVIX    VXN    RVX  VXAPL
+factor1 -0.376 -0.361 -0.373 -0.366 -0.315 -0.366 -0.363 -0.302
+factor2 -0.083 -0.047 -0.095 -0.072 -0.564  0.083  0.037  0.806
+factor3  0.159  0.256  0.134  0.138 -0.748  0.094  0.262 -0.486
+factor4  0.097  0.582 -0.425 -0.636  0.104  0.205  0.117 -0.017
+
+features: 38 columns, 2951 / 3011 rows valid after warm-up
+walk-forward: initial_train=1500, step=63, purge_gap=5, lgb_params={'objective': 'regression', 'max_depth': 3, 'num_leaves': 7, 'learning_rate': 0.05, 'n_estimators': 100, 'subsample': 0.8, 'colsample_bytree': 0.8, 'min_child_samples': 20, 'random_state': 20260901, 'verbosity': -1}
+  factor1 (level): oos_r2=-0.0501  n_oos=1451
+  factor2 (VXAPL-dominated): oos_r2=0.0101  n_oos=1451
+  factor3 (VVIX-dominated): oos_r2=-0.0342  n_oos=1451
+  factor4 (term-slope): oos_r2=-0.0422  n_oos=1451
+  runtime: 1.31s
+
+==============================================================================
+SUMMARY (resume claims vs measured):
+{
+  "claim_years_of_history": 12,
+  "measured_years_of_history": 11.99,
+  "claim_n_indices": 8,
+  "measured_n_indices": 8,
+  "claim_n_factors": 3,
+  "claim_variance_held_pct": 91,
+  "measured_top3_variance_pct": 94.94,
+  "claim_n_features": 38,
+  "measured_n_features": 38,
+  "claim_term_slope_r2": 0.038,
+  "claim_level_r2": -0.004,
+  "measured_results": {
+    "factor1_level": {
+      "oos_r2": -0.0500769043130902,
+      "n_oos": 1451
+    },
+    "factor2_VXAPL-dominated": {
+      "oos_r2": 0.010055720547102243,
+      "n_oos": 1451
+    },
+    "factor3_VVIX-dominated": {
+      "oos_r2": -0.03419288673764709,
+      "n_oos": 1451
+    },
+    "factor4_term-slope": {
+      "oos_r2": -0.042234159018950335,
+      "n_oos": 1451
+    }
+  }
+}
